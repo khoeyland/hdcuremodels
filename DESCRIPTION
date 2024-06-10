@@ -18,6 +18,7 @@ Imports: doParallel,
          glmnet,
          knockoff,
          mvnfast,
+         parallel,
          plyr,
          methods,
          survival
