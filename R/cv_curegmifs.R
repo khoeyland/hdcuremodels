@@ -48,7 +48,8 @@
 #' @export
 #'
 #' @import knockoff
-#' @import doMC
+#' @import doParallel
+#' @import parallel
 #' @import stats
 #' @import survival
 #' @import foreach
@@ -68,7 +69,7 @@
 # Fit a penalized Weibull MCM using GMIFS selecting parameters using 2-fold CV
 #' fit.cv <- cv_curegmifs(Surv(Time, Censor) ~ ., data = training,
 #'                       x.latency = training, fdr.control = FALSE,
-#'                       maxit = 500, epsilon = 0.01,
+#'                       maxit = 450, epsilon = 0.01,
 #'                       n_folds = 2, seed = 23, verbose = TRUE)
 cv_curegmifs <- function(formula, data, subset, x.latency=NULL, model="weibull",
          penalty.factor.inc=NULL, penalty.factor.lat=NULL, fdr.control=FALSE, fdr=0.2,

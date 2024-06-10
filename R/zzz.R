@@ -570,7 +570,9 @@ cv.em.nofdr <-
     if(measure.inc=="auc") AUC = matrix(NA, nrow(tuning_sequence), n_folds)
     if(parallel){ # parallel computing
       ncores = n_folds
-      registerDoMC(ncores)
+      #registerDoMC(ncores)
+      cl <- parallel::makeCluster(detectCores())
+      doParallel::registerDoParallel(cl)
       res_list = foreach(k = 1:n_folds) %dopar% {
         res = cv.em.inner(X_u, X_p, W_u, W_p, time, delta, folds_i, k,
                           model,penalty,thresh, nIter, grid.tuning, tuning_sequence,
@@ -578,6 +580,7 @@ cv.em.nofdr <-
                           measure.inc, cure_cutoff)
         return(res)
       }
+      parallel::stopCluster(cl)
       if(measure.inc=="auc"){
         for (k in 1:n_folds){
           AUC[,k] = res_list[[k]][1,]
@@ -758,12 +761,15 @@ cv.gmifs.nofdr <-
     if(measure.inc=="auc") AUC = matrix(NA, nIter, n_folds)
     if(parallel){ # parallel computing
       ncores = n_folds
-      registerDoMC(ncores)
+      #registerDoMC(ncores) # for doMC
+      cl <- parallel::makeCluster(detectCores())
+      doParallel::registerDoParallel(cl)
       res_list = foreach(k = 1:n_folds) %dopar% {
         res = cv.gmifs.inner(X_u, X_p, W_u, W_p, time, delta, folds_i, k,
                              model,thresh, nIter, epsilon, inits, measure.inc, cure_cutoff, verbose)
         return(res)
       }
+      parallel::stopCluster(cl)
       if(measure.inc=="auc"){
         for (k in 1:n_folds){
           AUC[,k] = res_list[[k]][1,]

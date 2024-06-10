@@ -53,7 +53,8 @@
 #' @export
 #'
 #' @import knockoff
-#' @import doMC
+#' @import doParallel
+#' @import parallel
 #' @import stats
 #' @import survival
 #' @import glmnet
