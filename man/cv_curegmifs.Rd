@@ -112,7 +112,7 @@ training <- temp$Training
 
 fit.cv <- cv_curegmifs(Surv(Time, Censor) ~ ., data = training,
                       x.latency = training, fdr.control = FALSE,
-                      maxit = 500, epsilon = 0.01,
+                      maxit = 450, epsilon = 0.01,
                       n_folds = 2, seed = 23, verbose = TRUE)
 }
 \references{
