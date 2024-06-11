@@ -87,25 +87,25 @@ summary.mixturecure <-
       model.select.EBIC <- which.min(EBIC)
       model.select.logLik = which.max(logLik)
     }
-    cat("Mixture cure model fit using the", object$method, "algorithm \n")
+    message("Mixture cure model fit using the ", object$method, " algorithm \n")
     if (object$cv == FALSE) {
-      cat("at step    = ", model.select.logLik, "logLik     = ", logLik[model.select.logLik], "\n")
-      cat("at step    = ", model.select.AIC, "AIC        = ", AIC[model.select.AIC], "\n")
-      cat("at step    = ", model.select.mAIC, "mAIC        = ", mAIC[model.select.mAIC], "\n")
-      cat("at step    = ", model.select.cAIC, "cAIC        = ", cAIC[model.select.cAIC], "\n")
-      cat("at step    = ", model.select.BIC, "BIC        = ", BIC[model.select.BIC], "\n")
-      cat("at step    = ", model.select.mBIC, "mBIC        = ", mBIC[model.select.mBIC], "\n")
-      cat("at step    = ", model.select.EBIC, "EBIC        = ", EBIC[model.select.EBIC], "\n")
-      cat("\n")
+      message("at step    = ", model.select.logLik, " logLik     = ", logLik[model.select.logLik], "\n")
+      message("at step    = ", model.select.AIC, " AIC        = ", AIC[model.select.AIC], "\n")
+      message("at step    = ", model.select.mAIC, " mAIC        = ", mAIC[model.select.mAIC], "\n")
+      message("at step    = ", model.select.cAIC, " cAIC        = ", cAIC[model.select.cAIC], "\n")
+      message("at step    = ", model.select.BIC, " BIC        = ", BIC[model.select.BIC], "\n")
+      message("at step    = ", model.select.mBIC, " mBIC        = ", mBIC[model.select.mBIC], "\n")
+      message("at step    = ", model.select.EBIC, " EBIC        = ", EBIC[model.select.EBIC], "\n")
+      message("\n")
     }
     else if (!object$fdr.control) {
-      cat("using cross-validation \n")
-      cat("logLik     = ", logLik, "\n")
-      cat("AIC        = ", AIC, "\n")
-      cat("BIC        = ", BIC, "\n")
-      cat("\n")
+      message("using cross-validation \n")
+      message("logLik     = ", logLik, "\n")
+      message("AIC        = ", AIC, "\n")
+      message("BIC        = ", BIC, "\n")
+      message("\n")
     } else {
-      cat("Number of non-zero incidence covariates", sum(object$b!=0), "\n")
-      cat("Number of non-zero latency covariates", sum(object$beta!=0), "\n")
+      message("Number of non-zero incidence covariates: ", sum(object$b!=0), "\n")
+      message("Number of non-zero latency covariates: ", sum(object$beta!=0), "\n")
     }
   }
