@@ -93,7 +93,7 @@ cv_cureem(
 
 \item{cure_cutoff}{numeric value representing the cutoff time value that represents subjects not experiencing the event by this time are cured. This value is used to produce a proxy for the unobserved cure status when calculating C-statistic and AUC (default is 5 representing 5 years). Users should be careful to note the time scale of their data and adjust this according to the time scale and clinical application.}
 
-\item{parallel}{logical. If TRUE, parallel processing is performed for K-fold CV using \code{foreach} and the \pkg{doMC} package is required.}
+\item{parallel}{logical. If TRUE, parallel processing is performed for K-fold CV using \code{foreach} and the \pkg{doParallel} package is required.}
 
 \item{seed}{optional integer representing the random seed. Setting the random seed fosters reproducibility of the results.}
 
